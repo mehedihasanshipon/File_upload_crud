@@ -19,6 +19,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'role_id' => $this->role_id,
+            'role' => $this->role,
             'status' => $this->status,
             'created_at' => (new \DateTime($this->created_at))->format('Y-m-d H:i:s'),
         ];

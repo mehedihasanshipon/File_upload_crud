@@ -10,6 +10,7 @@ use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -21,7 +22,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::get();
+        $users = User::with('role')
+        ->paginate(10)
+        ->appends(request()->query());
+
         return Inertia::render('User/Index', [
             'users' => UserResource::collection($users)
         ]);
@@ -110,6 +114,25 @@ class UserController extends Controller
         return Redirect::route('admin.dashboard.index')->with('success', 'User Updated Successfully!');
     }
 
+    // User banned or Enable function
+    public function disableUsers(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        if($user->role->slug == 'admin') {
+            return back()->with('error', 'Can not Disabled Admin User');
+        }else{
+            $user->update([
+                'status' => $request->status,
+            ]);
+        }
+
+        if ($user->status) {
+            return back()->with('success', 'Enabled User');
+        } else {
+            return back()->with('error', 'Disabled User');
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -120,6 +143,6 @@ class UserController extends Controller
     {
         $user = User::where('id',$user)->first();
         $user->delete();
-        return Redirect::back()->with('success', 'User Deleted');
+        return Redirect::back()->with('error', 'User Deleted');
     }
 }

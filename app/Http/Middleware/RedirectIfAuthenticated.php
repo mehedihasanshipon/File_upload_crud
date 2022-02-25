@@ -23,8 +23,14 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if(Auth::user()->isAdmin()){
+                    $redirectPath=config('fortify.admin');
+                }else {
+                    $redirectPath=config('fortify.home');
+                }
+                return redirect($redirectPath);
             }
+            
         }
 
         return $next($request);

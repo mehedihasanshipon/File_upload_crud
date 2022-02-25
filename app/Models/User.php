@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'role_id',
+        'status',
         'password',
     ];
 
@@ -59,6 +60,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //user  role
+    public function hasRole($role)
+    {
+        return $this->role->slug === $role;
+    }
 
     public function role()
     {

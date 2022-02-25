@@ -101,6 +101,7 @@
 			</main>
 		</div>
 	</div>
+	<Notification />
 </template>
 
 <script>
@@ -109,6 +110,7 @@ import {Dialog, DialogOverlay, Menu, MenuButton, MenuItem, MenuItems, Transition
 import {BellIcon, CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, MenuAlt2Icon, UsersIcon, XIcon} from "@heroicons/vue/outline"
 import {SearchIcon} from "@heroicons/vue/solid"
 import {Link} from "@inertiajs/inertia-vue3"
+import Notification from "@/Components/Notification.vue"
 
 const navigation = [
 	{name: "Dashboard", href: "route('filelist.index')", icon: HomeIcon, current: true},
@@ -135,6 +137,7 @@ export default {
 		SearchIcon,
 		XIcon,
 		Link,
+		Notification,
 	},
 	setup() {
 		const sidebarOpen = ref(false)

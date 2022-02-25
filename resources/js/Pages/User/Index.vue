@@ -20,8 +20,9 @@
 									<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
 									<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
 									<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-									<!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th> -->
-									<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+									<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+									<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created At</th>
+									<th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -33,11 +34,19 @@
 										{{ user.email }}
 									</td>
 									<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-										{{ user.status }}
+										<Switch v-model="user.status" @click="disableUsers(user)" class="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-green-700">
+											<span class="sr-only">Use setting</span>
+											<span aria-hidden="true" class="pointer-events-none absolute bg-white w-full h-full rounded-md" />
+											<span aria-hidden="true" :class="[user.status ? 'bg-indigo-600' : 'bg-gray-200', 'pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200']" />
+											<span aria-hidden="true" :class="[user.status ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none absolute left-0 inline-block h-5 w-5 border border-gray-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200']" />
+										</Switch>
 									</td>
-									<!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-										{{ user.role }}
-									</td> -->
+									<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+										{{ user.role.name }}
+									</td>
+									<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+										{{ user.created_at }}
+									</td>
 									<td class="px-6 py-4 whitespace-nowrap text-sm text-center font-medium">
 										<div class="flex justify-center space-x-2 text-left">
 											<Link :href="route('admin.dashboard.edit', user.id)">
@@ -52,16 +61,22 @@
 							</tbody>
 						</table>
 					</div>
+					<Pagination :links="users.meta.links" :to="users.meta.to" :from="users.meta.from" :total="users.meta.total" />
 				</div>
 			</div>
 		</div>
 	</app-layout>
+	<Notification />
 </template>
 
 <script>
 import AppLayout from "../../Layouts/Admin/AppLayout.vue"
 import {Link} from "@inertiajs/inertia-vue3"
+import {Switch} from "@headlessui/vue"
 import {PencilAltIcon, TrashIcon} from "@heroicons/vue/outline"
+import {Inertia} from "@inertiajs/inertia"
+import Notification from "@/Components/Notification.vue"
+import Pagination from "@/Components/Pagination"
 
 export default {
 	components: {
@@ -69,12 +84,29 @@ export default {
 		Link,
 		PencilAltIcon,
 		TrashIcon,
+		Switch,
+		Notification,
+		Pagination,
 	},
 	props: {
 		users: Object,
 	},
 	setup() {
-		return {}
+		const disableUsers = (user) => {
+			Inertia.post(
+				route("admin.users.ban", user.id),
+				{
+					status: user.status,
+				},
+				{
+					preserveState: true,
+					preserveScroll: true,
+				}
+			)
+		}
+		return {
+			disableUsers,
+		}
 	},
 }
 </script>

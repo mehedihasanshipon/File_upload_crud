@@ -48,12 +48,11 @@ class ContactImport implements ToCollection,WithHeadingRow,WithValidation,SkipsO
                    'zip'=>$contact['zip'],
                ]);
            }
-
-           $this->filelist->update([
-               'total_uploaded'=>$this->count,
-               'total_processed'=>$rows->count(),
-           ]);
         }
+        $this->filelist->update([
+            'total_uploaded'=>$this->count,
+            'total_processed'=>$rows->count(),
+        ]);
     }
 
     public function rules(): array
@@ -62,6 +61,7 @@ class ContactImport implements ToCollection,WithHeadingRow,WithValidation,SkipsO
             'number' => [
                 'required',
                 'integer',
+                'digits_between:1,12'
             ],
             'first_name' => [
                 'nullable',
