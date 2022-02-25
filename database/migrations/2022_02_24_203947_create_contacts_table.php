@@ -17,11 +17,11 @@ class CreateContactsTable extends Migration
             $table->id();
             $table->foreignId('group_id')->constrained('groups')->onDelete('cascade');
             $table->string('number');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('state');
-            $table->string('zip');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
             $table->timestamps();
         });
     }

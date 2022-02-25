@@ -15,11 +15,11 @@ class CreateFileListsTable extends Migration
     {
         Schema::create('file_lists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('user')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('file_name');
             $table->string('file_path');
-            $table->integer('total_uploaded');
-            $table->integer('total_processed');
+            $table->integer('total_uploaded')->nullable();
+            $table->integer('total_processed')->nullable();
             $table->timestamps();
         });
     }

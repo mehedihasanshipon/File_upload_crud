@@ -43,10 +43,8 @@
 				</div>
 				<div class="flex-1 flex flex-col overflow-y-auto">
 					<nav class="flex-1 px-2 py-4 space-y-1">
-						<a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
-							<component :is="item.icon" :class="[item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
-							{{ item.name }}
-						</a>
+						<Link :href="route('user.dashboard')" :class="[4 % 2 == 0 ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']"> Dashboard </Link>
+						<Link :href="route('filelist.index')" :class="[4 % 2 == 0 ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']"> File and Groups </Link>
 					</nav>
 				</div>
 			</div>
@@ -113,8 +111,8 @@ import {SearchIcon} from "@heroicons/vue/solid"
 import {Link} from "@inertiajs/inertia-vue3"
 
 const navigation = [
-	{name: "Dashboard", href: "#", icon: HomeIcon, current: true},
-	{name: "Team", href: "#", icon: UsersIcon, current: false},
+	{name: "Dashboard", href: "route('filelist.index')", icon: HomeIcon, current: true},
+	{name: "Team", href: "route('filelist.index')", icon: UsersIcon, current: false},
 ]
 const userNavigation = [
 	{name: "Your Profile", href: "#"},

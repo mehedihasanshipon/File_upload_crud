@@ -1,9 +1,11 @@
 <template>
 	<app-layout>
-		<div class="py-12">
-			<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-				<div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-					<h1 class="text-red-600 text-xl">User Panel</h1>
+		<div class="container mx-auto">
+			<div class="overflow-hidden sm:rounded-lg">
+				<div class="mt-2 grid grid-cols-1 gap-0 sm:grid-cols-2 lg:grid-cols-3">
+					<Card title="Total Files" :count="totalFiles" />
+					<Card title=" Total Groups" :count="totalGroups" />
+					<Card title="Total Contacts" :count="totalContacts" />
 				</div>
 			</div>
 		</div>
@@ -14,11 +16,18 @@
 import {defineComponent} from "vue"
 import AppLayout from "@/Layouts/User/AppLayout.vue"
 import Welcome from "@/Jetstream/Welcome.vue"
+import Card from "../Components/Card.vue"
 
 export default defineComponent({
 	components: {
 		AppLayout,
 		Welcome,
+		Card,
+	},
+	props: {
+		totalFiles: Object,
+		totalGroups: Object,
+		totalContacts: Object,
 	},
 })
 </script>

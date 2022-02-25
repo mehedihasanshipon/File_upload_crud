@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class FileList extends Model
 {
     use HasFactory;
+
+    protected $guarded=['id'];
+
+    public function groups(){
+        return $this->hasMany(Group::class);
+    }
 }

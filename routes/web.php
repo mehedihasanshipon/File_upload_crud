@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +29,11 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', DashboardController::class);
+    Route::get('/dashboard', DashboardController::class)->name('user.dashboard');
+    Route::get('/file-lists',[ImportController::class,'index'])->name('filelist.index');
+    Route::get('import/file', [ImportController::class, 'import'])->name('import.file');
+    Route::post('import', [ImportController::class, 'storeImport'])->name('import.store');
+    Route::post('import', [ImportController::class, 'storeImport'])->name('import.store');
+    Route::get('/group-list/{id}', [ImportController::class, 'show'])->name('import.groupList');
+    Route::get('/contact-list/{id}', [ImportController::class, 'getContactList'])->name('import.contactList');
 });
