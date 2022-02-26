@@ -61,7 +61,8 @@ class ContactImport implements ToCollection,WithHeadingRow,WithValidation,SkipsO
             'number' => [
                 'required',
                 'integer',
-                'digits_between:1,12'
+                'digits_between:1,12',
+                'regex:/^(?:\+?1[-. ]?)?\(?([2-9][0-8][0-9])\)?[-. ]?([2-9][0-9]{2})[-. ]?([0-9]{4})$/'
             ],
             'first_name' => [
                 'nullable',
