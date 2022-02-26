@@ -48,9 +48,7 @@
 import AppLayout from "../../Layouts/User/AppLayout.vue"
 import {Link, useForm} from "@inertiajs/inertia-vue3"
 import {PencilAltIcon, TrashIcon} from "@heroicons/vue/outline"
-import {ref} from "@vue/reactivity"
 import PrimaryButton from "@/Components/PrimaryButton.vue"
-import {Inertia} from "@inertiajs/inertia"
 
 export default {
 	components: {
@@ -72,8 +70,6 @@ export default {
 		}
 
 		const submit = () => {
-			console.log(form.file)
-
 			form.post(route("import.store"))
 		}
 

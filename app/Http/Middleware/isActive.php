@@ -24,7 +24,7 @@ class isActive
 
             $request->session()->regenerateToken();
 
-            return redirect()->route('login')->with('success', 'Your Account is suspended, please contact Admin.');
+            return redirect()->route('login')->with('error', 'Your Account is suspended, Please Contact Admin.');
         }
 
         return $next($request);

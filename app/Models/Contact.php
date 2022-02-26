@@ -20,7 +20,6 @@ class Contact extends Model
         'created_at' => 'datetime:Y-m-d',
     ];
 
-
     public function group()
     {
         return $this->belongsTo(Group::class);

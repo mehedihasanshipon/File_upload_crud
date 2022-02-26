@@ -21,10 +21,10 @@ class DashboardController extends Controller
         $totalFiles = FileList::count();
         $totalGroups = Group::count();
         $totalContacts = Contact::count();
-        return Inertia::render('Dashboard',[
+        return Inertia::render('Dashboard', [
             'totalFiles' => $totalFiles,
-            'totalGroups' => $totalGroups, 
-            'totalContacts' => $totalContacts, 
+            'totalGroups' => $totalGroups,
+            'totalContacts' => $totalContacts,
         ]);
     }
 }

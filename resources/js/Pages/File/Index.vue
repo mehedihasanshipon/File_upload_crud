@@ -91,7 +91,6 @@ import {Link} from "@inertiajs/inertia-vue3"
 import {PencilAltIcon, TrashIcon} from "@heroicons/vue/outline"
 import {ref} from "@vue/reactivity"
 import Modal from "../../Jetstream/Modal.vue"
-import {Inertia} from "@inertiajs/inertia"
 import Pagination from "@/Components/Pagination"
 
 export default {

@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
-use PHPUnit\TextUI\XmlConfiguration\Groups;
 
 class ImportController extends Controller
 {
@@ -25,10 +24,10 @@ class ImportController extends Controller
     public function index()
     {
         $fileLists = FileList::latest()
-        ->paginate(10)
-        ->appends(request()->query());
+            ->paginate(10)
+            ->appends(request()->query());
 
-        return Inertia::render('File/Index',[
+        return Inertia::render('File/Index', [
             'fileLists' => FileResource::collection($fileLists)
         ]);
     }
@@ -55,16 +54,16 @@ class ImportController extends Controller
             'name' => 'required|string',
             'file' => 'required',
         ]);
-        $extension=$request->file->extension();
-        $name=$request->name.'.'.$extension;
-        $count=count($fp = file($request->file));
-        $fileList=FileList::create([
-            'user_id'=>Auth::user()->id,
-            'file_name'=>$name,
-            'file_path'=>$request->file('file')->storeAs('files',$name)
+        $extension = $request->file->extension();
+        $name = $request->name . '.' . $extension;
+        $count = count($fp = file($request->file));
+        $fileList = FileList::create([
+            'user_id' => Auth::user()->id,
+            'file_name' => $name,
+            'file_path' => $request->file('file')->storeAs('files', $name)
         ]);
 
-        Excel::import(new ContactImport($fileList,$count), $request->file('file'));
+        Excel::import(new ContactImport($fileList, $count), $request->file('file'));
         return redirect()->route('filelist.index')->with('success', 'File Imported');
     }
 
@@ -76,7 +75,7 @@ class ImportController extends Controller
      */
     public function show($id)
     {
-        $groups = Group::where('file_list_id',$id)->get();
+        $groups = Group::where('file_list_id', $id)->get();
         return response([
             'groups' => GroupResource::collection($groups)
         ]);
@@ -90,47 +89,13 @@ class ImportController extends Controller
      */
     public function getContactList($id)
     {
-        $contacts = Contact::where('group_id',$id)
-        ->latest()
-        ->paginate(10)
-        ->appends(request()->query());
-        
-        return Inertia::render('File/ContactList',[
+        $contacts = Contact::where('group_id', $id)
+            ->latest()
+            ->paginate(10)
+            ->appends(request()->query());
+
+        return Inertia::render('File/ContactList', [
             'contacts' => ContactResource::collection($contacts)
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -17,19 +17,20 @@ class Role extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function permissions(){
+    public function permissions()
+    {
         return $this->belongsToMany(Permission::class);
     }
 
-    public function createPermission($request){
+    public function createPermission($request)
+    {
         $this->permissions()->sync($request->permission);
-        
     }
 
-    public function hasPermission($permission){
-         if($this->permissions->where('slug',$permission)->first()){
-             return true;
-         }
-    } 
-    
+    public function hasPermission($permission)
+    {
+        if ($this->permissions->where('slug', $permission)->first()) {
+            return true;
+        }
+    }
 }

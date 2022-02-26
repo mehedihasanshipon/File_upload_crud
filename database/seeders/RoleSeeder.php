@@ -18,13 +18,13 @@ class RoleSeeder extends Seeder
     {
         $permissions = Permission::all();
         Role::updateOrCreate([
-            'name'=>'Admin',
-            'slug'=>Str::slug('admin')
+            'name' => 'Admin',
+            'slug' => Str::slug('admin')
         ])->permissions()->sync($permissions->pluck('id'));
 
         Role::updateOrCreate([
-            'name'=>'User',
-            'slug'=>Str::slug('user')
+            'name' => 'User',
+            'slug' => Str::slug('user')
         ]);
     }
 }

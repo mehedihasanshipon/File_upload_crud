@@ -9,13 +9,15 @@ class Group extends Model
 {
     use HasFactory;
 
-    protected $guarded=['id'];
+    protected $guarded = ['id'];
 
-    public function fileList(){
+    public function fileList()
+    {
         return $this->belongsTo(FileList::class);
     }
 
-    public function contacts(){
+    public function contacts()
+    {
         return $this->hasMany(Contact::class);
     }
 }

@@ -21731,10 +21731,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
 /* harmony import */ var _Jetstream_Modal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Jetstream/Modal.vue */ "./resources/js/Jetstream/Modal.vue");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.vue");
-
-
+/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.vue");
 
 
 
@@ -21747,7 +21744,7 @@ __webpack_require__.r(__webpack_exports__);
     PencilAltIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__.PencilAltIcon,
     TrashIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__.TrashIcon,
     Modal: _Jetstream_Modal_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Pagination: _Components_Pagination__WEBPACK_IMPORTED_MODULE_5__["default"]
+    Pagination: _Components_Pagination__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   props: {
     contacts: Array
@@ -21774,9 +21771,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
 /* harmony import */ var _Components_PrimaryButton_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/PrimaryButton.vue */ "./resources/js/Components/PrimaryButton.vue");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-
-
 
 
 
@@ -21802,7 +21796,6 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     var submit = function submit() {
-      console.log(form.file);
       form.post(route("import.store"));
     };
 
@@ -21830,11 +21823,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_User_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Layouts/User/AppLayout.vue */ "./resources/js/Layouts/User/AppLayout.vue");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
-/* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+/* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
 /* harmony import */ var _Jetstream_Modal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Jetstream/Modal.vue */ "./resources/js/Jetstream/Modal.vue");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.vue");
-
+/* harmony import */ var _Components_Pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Pagination */ "./resources/js/Components/Pagination.vue");
 
 
 
@@ -21848,17 +21839,17 @@ __webpack_require__.r(__webpack_exports__);
     PencilAltIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__.PencilAltIcon,
     TrashIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__.TrashIcon,
     Modal: _Jetstream_Modal_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Pagination: _Components_Pagination__WEBPACK_IMPORTED_MODULE_5__["default"]
+    Pagination: _Components_Pagination__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   props: {
     fileLists: Array
   },
   setup: function setup() {
-    var form = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_6__.ref)({
+    var form = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_5__.ref)({
       file: null
     });
-    var groups = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_6__.ref)([]);
-    var showGroupModal = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_6__.ref)(false);
+    var groups = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_5__.ref)([]);
+    var showGroupModal = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_5__.ref)(false);
 
     function showGroup(file) {
       showGroupModal.value = !showGroupModal.value;
@@ -23890,7 +23881,7 @@ var _hoisted_18 = {
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex-1 flex"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <form class=\"w-full flex md:ml-0\" action=\"#\" method=\"GET\">\n\t\t\t\t\t\t\t<label for=\"search-field\" class=\"sr-only\">Search</label>\n\t\t\t\t\t\t\t<div class=\"relative w-full text-gray-400 focus-within:text-gray-600\">\n\t\t\t\t\t\t\t\t<div class=\"absolute inset-y-0 left-0 flex items-center pointer-events-none\">\n\t\t\t\t\t\t\t\t\t<SearchIcon class=\"h-5 w-5\" aria-hidden=\"true\" />\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<input id=\"search-field\" class=\"block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm\" placeholder=\"Search\" type=\"search\" name=\"search\" />\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</form> ")], -1
+}, null, -1
 /* HOISTED */
 );
 
@@ -24102,7 +24093,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": "origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <MenuItem v-for=\"item in userNavigation\" :key=\"item.name\" v-slot=\"{active}\">\n\t\t\t\t\t\t\t\t\t\t<a :href=\"item.href\" :class=\"[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']\">{{ item.name }}</a>\n\t\t\t\t\t\t\t\t\t</MenuItem> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
                 href: _ctx.route('logout'),
                 method: "post",
                 "class": "block px-4 py-2 text-sm text-gray-700",
@@ -24235,7 +24226,7 @@ var _hoisted_19 = {
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex-1 flex"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <form class=\"w-full flex md:ml-0\" action=\"#\" method=\"GET\">\n\t\t\t\t\t\t\t<label for=\"search-field\" class=\"sr-only\">Search</label>\n\t\t\t\t\t\t\t<div class=\"relative w-full text-gray-400 focus-within:text-gray-600\">\n\t\t\t\t\t\t\t\t<div class=\"absolute inset-y-0 left-0 flex items-center pointer-events-none\">\n\t\t\t\t\t\t\t\t\t<SearchIcon class=\"h-5 w-5\" aria-hidden=\"true\" />\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<input id=\"search-field\" class=\"block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm\" placeholder=\"Search\" type=\"search\" name=\"search\" />\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</form> ")], -1
+}, null, -1
 /* HOISTED */
 );
 
@@ -24461,7 +24452,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": "origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <MenuItem v-for=\"item in userNavigation\" :key=\"item.name\" v-slot=\"{active}\">\n\t\t\t\t\t\t\t\t\t\t<a :href=\"item.href\" :class=\"[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']\">{{ item.name }}</a>\n\t\t\t\t\t\t\t\t\t</MenuItem> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
                 href: _ctx.route('logout'),
                 method: "post",
                 "class": "block px-4 py-2 text-sm text-gray-700",

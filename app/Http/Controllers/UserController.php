@@ -23,8 +23,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with('role')
-        ->paginate(10)
-        ->appends(request()->query());
+            ->paginate(10)
+            ->appends(request()->query());
 
         return Inertia::render('User/Index', [
             'users' => UserResource::collection($users)
@@ -55,7 +55,7 @@ class UserController extends Controller
         $data = $request->validated();
         // Check if password was given 
         if ($data['password']) {
-            $data['password'] = Hash::make($data['password']) ;
+            $data['password'] = Hash::make($data['password']);
         }
         // Store user in the database
         $user = User::create($data);
@@ -71,7 +71,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        
     }
 
     /**
@@ -82,7 +81,7 @@ class UserController extends Controller
      */
     public function edit($user)
     {
-        $user = User::where('id',$user)->first();
+        $user = User::where('id', $user)->first();
         $roles = Role::select('id', 'name', 'slug')->get();
         return Inertia::render('User/Edit', [
             'roles' => $roles,
@@ -99,13 +98,13 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, $user)
     {
-        $user = User::where('id',$user)->first();
+        $user = User::where('id', $user)->first();
         $data = $request->validated();
-        
+
         // Check if password was given 
         if ($data['password']) {
-            $data['password'] = $data['password'] ? Hash::make($data['password']) : Hash::make($user->password) ;
-        }else {
+            $data['password'] = $data['password'] ? Hash::make($data['password']) : Hash::make($user->password);
+        } else {
             $data['password'] = Hash::make($user->password);
         }
         // Update user in the database
@@ -118,9 +117,9 @@ class UserController extends Controller
     public function disableUsers(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        if($user->role->slug == 'admin') {
+        if ($user->role->slug == 'admin') {
             return back()->with('error', 'Can not Disabled Admin User');
-        }else{
+        } else {
             $user->update([
                 'status' => $request->status,
             ]);
@@ -141,7 +140,7 @@ class UserController extends Controller
      */
     public function destroy($user)
     {
-        $user = User::where('id',$user)->first();
+        $user = User::where('id', $user)->first();
         $user->delete();
         return Redirect::back()->with('error', 'User Deleted');
     }

@@ -11,7 +11,7 @@ class Permission extends Model
     use HasFactory;
     public static function getAllPermissions()
     {
-        return Cache::rememberForever('permissions.all', function() {
+        return Cache::rememberForever('permissions.all', function () {
             return self::all();
         });
     }
@@ -28,7 +28,7 @@ class Permission extends Model
     {
         return $this->belongsTo(Module::class);
     }
-    
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);
